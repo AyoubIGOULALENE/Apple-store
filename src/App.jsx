@@ -5,6 +5,9 @@ import ProductViewer from './components/ProductViewer'
 import gsap from 'gsap'
 import { ScrollTrigger} from 'gsap/all'
 import ShowCase from './components/ShowCase'
+import Features from './components/Features'
+import HighLights from './components/HighLights'
+import Performance from './components/Performance'
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
@@ -14,6 +17,9 @@ const App = () => {
   <Hero />
   <ProductViewer  />
   <ShowCase />
+<Performance />
+<Features />
+ <HighLights />
  </main>
   )
 }
