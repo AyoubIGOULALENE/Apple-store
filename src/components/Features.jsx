@@ -50,13 +50,16 @@ const ModelScroll = () => {
         tl.call(() => setTexture(feature.videoPath), null, offset);
         tl.to(`.feature-card:nth-child(${index + 1})`, { opacity: 1, y: 0, ease: 'power1.out' }, offset);
       });
+
+      // After all cards fade in, animate them to center
+      tl.to('.feature-card', { x: 0, ease: 'power1.out' }, '+=0.2');
     }, []);
 
     return (
         <group ref={modelRef}>
           <group rotation={[Math.PI / 5, 0, 0]}>
             <Suspense fallback={<Html><h1 className='text-white text-3xl uppercase'>Loading...</h1></Html>}>
-              <MacBook scale={isMobile ? 0.5 : 1} position={[0, -10, -10]} />
+            <MacBook scale={isMobile ? 0.5 : 1} position={isMobile ? [0, 0, 0] : [0, -10, -10]} />
             </Suspense>
           </group>
         </group>

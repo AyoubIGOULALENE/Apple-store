@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 const HighLights = () => {
   const isMobile = useMediaQuery({query: '(max-width: 1024px)'});
   useGSAP(() => {
+    gsap.set(['.left-column','.right-column'], { opacity: 0, y: 20 });
     gsap.to(['.left-column','.right-column'],{
       scrollTrigger: {
         trigger: '#highlights',

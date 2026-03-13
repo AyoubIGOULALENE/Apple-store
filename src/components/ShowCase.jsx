@@ -3,19 +3,23 @@ import React from 'react'
 import { useMediaQuery } from 'react-responsive'
 import gsap from 'gsap'
 const ShowCase = () => {
-    const isTablet = useMediaQuery({query:'(max-width:1024px)'})
- useGSAP(() => {
-const timeline = gsap.timeline({
-    scrollTrigger:{
-        trigger:'#showcase',
-        start:'top 100%',
-        end:'bottom bottom',
-        scrub:true,
-    }
-})
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+    const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
 
-timeline.to('.mask img', {scale:1}).to('.content', {opacity:1,y:0,ease:"power1.in"})
- },[])
+    useGSAP(() => {
+        const timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#showcase',
+                start: isMobile ? 'top 80%' : 'top bottom',
+                end: isMobile ? 'bottom 20%' : 'center center',
+                scrub: true,
+                invalidateOnRefresh: true,
+            }
+        });
+
+        timeline.to('.mask img', { scale: 1, duration:0.5,ease: 'power1.inOut' })
+                .to('.content', { opacity: 1, duration:0.5, y: 0, ease: 'power1.in' }, 0);
+    }, []);
     return (
     <section id='showcase'>
         <div className="media">
